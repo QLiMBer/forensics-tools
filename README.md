@@ -19,4 +19,4 @@ Refer to individual tool documentation for specific usage instructions.
 The Unlicense - dedicates software to the public domain, no restrictions whatsoever.
 
 ## Tools
-- [Tree](./tree): Generates a tree-like structure of directories and files, accommodating non-ASCII characters and exporting it to a specified text file.
+- [Tree](./tree): Generates a tree-like structure of directories and files, accommodating non-ASCII characters and exporting it to a specified text file. For a quick documentation of acquired file structure.
