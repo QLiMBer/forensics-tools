@@ -43,6 +43,9 @@
 
     5) **Specify output directory for log files folders**
 
+    6) **Fix incorrectly calculated TB size**
+        - It named 8 TB drive as 7 TB. Its TotalSizeTB is 7.28 TB, which should be rounded up to 8 TB.
+
 #>
 
 param (
