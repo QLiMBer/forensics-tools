@@ -41,6 +41,8 @@
 
     4) **Log files into folders**
 
+    5) **Specify output directory for log files folders**
+
 #>
 
 param (
