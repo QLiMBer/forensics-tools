@@ -116,6 +116,19 @@ For structured parsing, use **Python with BeautifulSoup**.
 
 ---
 
+### **5️⃣ Additional Notes**
+
+- Metadata such as timestamps and sizes in the HTML listing may not be accurate; they are simply part of the HTML page.
+- However, this is the only method to obtain timestamps for directories, which can be crucial for identifying data exfiltration times.
+- For file metadata, HTTP headers can be used, typically containing `Last-Modified`, `Content-Length`, and `Content-Type` if provided by the server.
+- Example command to fetch HTTP headers:
+
+ ```bash
+ curl -I --socks5-hostname 127.0.0.1:9050 http://example.onion/file.pdf
+ ```
+
+---
+
 ## **✅ Summary**
 
 1. **Install & configure Tor in WSL (`torrc` settings, start service).**
