@@ -81,3 +81,8 @@ We originally attempted **`xargs` and `awk`** for decoding but encountered issue
 📂 **Preserves timestamps, resumes downloads**.  
 📊 **Minimal logging with only file requests and errors**.  
 🔡 **Correctly decodes URL-encoded filenames, including UTF-8 characters**.  
+
+## **TODO**
+
+1. File tree contains also information about folders timestamps. This information is part of html page and is not downloaded by wget. I have a script for that, consolidate with this.
+2. Or maybe better do not exclude automatically generated index.html?
