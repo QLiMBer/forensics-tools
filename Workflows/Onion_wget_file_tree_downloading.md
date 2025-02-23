@@ -13,8 +13,8 @@
 
 ## **2️⃣ Optimized `wget` Command**
 ```bash
-torsocks wget -r -np -nH --cut-dirs=1 -R "index.html*" -e robots=off --retry-connrefused --timeout=30 --tries=10 -c -N --progress=dot:mega -l inf "http://youronionsite.onion/full/" \
-2>&1 | grep -Ev "Reusing existing connection|HTTP request sent|Saving to:|tmp since it should be rejected|\.{6}|^[[:space:]]*0K|^Length:" | sed '/^$/d' > wget_cleaned_log.txt
+torsocks wget -r -np -nH --cut-dirs=1 -R "index.html*" -e robots=off --retry-connrefused --timeout=30 --tries=10 -c -N --progress=dot:mega -l inf "http://site.onion/data1/" \
+2>&1 | grep -Ev "Reusing existing connection|HTTP request sent|Saving to:|tmp since it should be rejected|\.{6}|^[[:space:]]*0K|^Length:|Last-modified header missing -- time-stamps turned off" | sed '/^$/d' > data1_log.txt
 ```
 
 ---
@@ -25,7 +25,7 @@ torsocks wget -r -np -nH --cut-dirs=1 -R "index.html*" -e robots=off --retry-con
 | `torsocks`        | Routes traffic through **Tor**. |
 | `-r -np -nH`      | Enables **full recursion** while preventing unnecessary folders. |
 | `--cut-dirs=1`    | Keeps directory structure clean. |
-| `-R "index.html*"`| Excludes **auto-generated index files**. |
+| `-R "index.html*"`| Excludes **auto-generated index files**, which are than only temporarily downloaded as index.html.tmp. |
 | `-e robots=off`   | Ignores `robots.txt` restrictions. |
 | `--retry-connrefused --timeout=30 --tries=10` | Ensures **stable downloads** over Tor. |
 | `-c -N`           | **Resumes downloads** and **preserves timestamps**. |
@@ -39,7 +39,7 @@ torsocks wget -r -np -nH --cut-dirs=1 -R "index.html*" -e robots=off --retry-con
 📌 **How?** Filtering removes connection reuse logs, temp files, progress updates, metadata, and empty lines.
 
 ```bash
-2>&1 | grep -Ev "Reusing existing connection|HTTP request sent|Saving to:|tmp since it should be rejected|\.{6}|^[[:space:]]*0K|^Length:" | sed '/^$/d' > wget_cleaned_log.txt
+2>&1 | grep -Ev "Reusing existing connection|HTTP request sent|Saving to:|tmp since it should be rejected|\.{6}|^[[:space:]]*0K|^Length:|Last-modified header missing -- time-stamps turned off" | sed '/^$/d' > wget_cleaned_log.txt
 ```
 
 ✅ **Keeps:**  
@@ -49,7 +49,8 @@ torsocks wget -r -np -nH --cut-dirs=1 -R "index.html*" -e robots=off --retry-con
 ✅ **Removes:**  
 - Connection reuse logs.  
 - HTTP requests & responses.  
-- Temporary file deletions.  
+- Temporary file deletions (typically for automatically created index.html.tmp).
+- Missing timestamps for automatically created index.html (which is excluded anyway).
 - Progress updates (`0K ...`).  
 - Metadata (`Length: ...`).  
 - Empty lines.  
