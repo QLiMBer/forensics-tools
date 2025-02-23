@@ -136,3 +136,7 @@ For structured parsing, use **Python with BeautifulSoup**.
 3. **Storing separate (not just terminal output) might be helpful in case of huge directory listings**
 4. **Resume if needed (`wget -c` ensures no duplicates).**
 5. **Extract directory timestamps later by parsing stored `index.html` files.**
+
+## **TODO**
+
+1. File tree contains also information about folders timestamps. This information is part of html page and is not downloaded by wget. I have a script for that, consolidate with this.
